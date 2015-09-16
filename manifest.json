@@ -1,0 +1,42 @@
+{
+    "manifest_version": 2,
+
+    "name": "GitHub Label Summaterizer",
+    "description": "Summate GitHub labels that have a numerical suffix.",
+    "homepage_url": "http://eseth.org",
+    "version": "0.0.1",
+
+    "permissions": [
+        "tabs",
+        "storage",
+        "https://github.com/*"
+    ],
+
+    "background": {
+        "persistent": false,
+        "scripts": ["dist/background.js"]
+    },
+
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+
+    "page_action": {
+        "default_icon": "icons/icon16.png",
+        "default_popup": "popup.html"
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["https://github.com/*"],
+            "js": ["dist/summate.js"]
+        }
+    ],
+
+    "options_ui": {
+        "page": "options.html",
+        "chrome_style": true
+    }
+}
